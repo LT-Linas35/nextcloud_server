@@ -18,15 +18,6 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Install build-wrapper
-        run: |
-          curl -L -O https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip
-          unzip build-wrapper-linux-x86.zip
-
-      - name: Run build-wrapper and compile project
-        run: |
-          ./build-wrapper-linux-x86/build-wrapper-linux-x86-64 --out-dir bw-output make
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -40,5 +31,6 @@ jobs:
             -Dsonar.pullrequest.branch=${{ github.head_ref }} 
             -Dsonar.pullrequest.base=${{ github.base_ref }}  
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.cfamily.compile-commands=bw-output/compile_commands.json
-
+            -Dsonar.cfile.suffixes=-    
+            -Dsonar.cpp.file.suffixes=-
+            -Dsonar.objc.file.suffixes=- 
