@@ -33,13 +33,6 @@ jobs:
             -Dsonar.qualitygate.wait=true
             -Dsonar.qualitygate.timeout=18000
 
-
-      - name: Check Quality Gate status
-        run: |
-          if [ "$(sonar-quality-gate status)" != "OK" ]; then
-            echo "Quality gate failed!"
-            exit 1
-          fi
       - name: Trigger build Docker image workflow
         run: |
           curl -X POST \
