@@ -1,38 +1,24 @@
 name: Sonar Cloud Scanner Release and Trigger build Docker image workflow
 
 on:
-  release:
-    types:
-      - published
-
+  push:
+    branches:
+      - dev
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=LT-Linas35_nextcloud_server
-            -Dsonar.organization=lt-linas35
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.cfamily.enabled=false
-            -Dsonar.c.file.suffixes=-
-            -Dsonar.cpp.file.suffixes=-
-            -Dsonar.objc.file.suffixes=-
-            -Dsonar.qualitygate.wait=true
-            -Dsonar.qualitygate.timeout=18000
-
       - name: Trigger build Docker image workflow
         run: |
           curl -X POST \
