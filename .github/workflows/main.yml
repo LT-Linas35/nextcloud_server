@@ -31,7 +31,7 @@ jobs:
             -Dsonar.cpp.file.suffixes=-
             -Dsonar.objc.file.suffixes=-
             -Dsonar.qualitygate.wait=true
-            -Dsonar.qualitygate.timeout=0
+            -Dsonar.qualitygate.timeout=18000
 
 
       - name: Check Quality Gate status
