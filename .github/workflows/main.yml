@@ -1,11 +1,8 @@
 name: Sonar Cloud Scanner Release and Trigger build Docker image workflow
 
 on:
-  push:
-    branches:
-      - dev
-  pull_request:
-    types: [opened, synchronize, reopened]
+  release:
+    types: [published]
 jobs:
   sonarcloud:
     name: SonarCloud
