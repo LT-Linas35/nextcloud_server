@@ -27,11 +27,24 @@ jobs:
           args: >
             -Dsonar.projectKey=LT-Linas35_nextcloud_server
             -Dsonar.organization=lt-linas35
-            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
-            -Dsonar.pullrequest.branch=${{ github.head_ref }} 
-            -Dsonar.pullrequest.base=${{ github.base_ref }}  
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.cfamily.enabled=false
             -Dsonar.c.file.suffixes=-
             -Dsonar.cpp.file.suffixes=-
             -Dsonar.objc.file.suffixes=-
+#            -Dsonar.qualitygate.wait=true
+#
+#
+#      - name: Check Quality Gate status
+#        run: |
+#          if [ "$(sonar-quality-gate status)" != "OK" ]; then
+#            echo "Quality gate failed!"
+#            exit 1
+#          fi
+      - name: Trigger build Docker image workflow
+        run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/LT-Linas35/final_project/actions/workflows/docker-production.yml/dispatches \
+          -d '{"ref":"main"}'
