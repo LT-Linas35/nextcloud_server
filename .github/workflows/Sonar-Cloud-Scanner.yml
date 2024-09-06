@@ -44,7 +44,7 @@ jobs:
       - name: Trigger build Docker image workflow
         run: |
           curl -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Authorization: token ${{ secrets.workflow_token }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/LT-Linas35/final_project/actions/workflows/docker-production.yml/dispatches \
           -d '{"ref":"main"}'
