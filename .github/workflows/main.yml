@@ -1,0 +1,18 @@
+name: Sonar Cloud Scanner Release and Trigger build Docker image workflow
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger build Docker image workflow
+        run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.workflow_token }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"ref":"main", "inputs": {"release_version": "${{ github.event.release.tag_name }}"}}' \
+          https://api.github.com/repos/LT-Linas35/final_project/actions/workflows/main.yml/dispatches
