@@ -23,12 +23,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=LT-Linas35_nextcloud_server
-            -Dsonar.organization=lt-linas35
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.cfamily.enabled=false
-            -Dsonar.c.file.suffixes=-
-            -Dsonar.cpp.file.suffixes=-
-            -Dsonar.objc.file.suffixes=-
