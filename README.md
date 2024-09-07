@@ -8,7 +8,7 @@
 
 ![](https://raw.githubusercontent.com/nextcloud/screenshots/master/nextcloud-hub-files-25-preview.png)
 
-## Why is this so awesome? 🤩:)
+## Why is this so awesome? 🤩
 
 * 📁 **Access your Data** You can store your files, contacts, calendars, and more on a server of your choosing.
 * 🔄 **Sync your Data** You keep your files, contacts, calendars, and more synchronized amongst your devices.
