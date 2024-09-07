@@ -482,8 +482,8 @@ class ComposerStaticInit2f23f73bc0cc116b4b1eee1521aa8652
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -523,8 +523,8 @@ class ComposerStaticInit2f23f73bc0cc116b4b1eee1521aa8652
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            1 => __DIR__ . '/..' . '/league/uri/src',
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'Laravel\\SerializableClosure\\' => 
         array (
