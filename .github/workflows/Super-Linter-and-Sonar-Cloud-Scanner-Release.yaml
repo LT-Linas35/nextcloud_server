@@ -27,7 +27,7 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          IGNORE_ERRORS: true #1. I`m leaving this TRUE on purpose, becouse I`m notwilling fixing this code... :) 
+          IGNORE_ERRORS: true #1. I`m leaving this TRUE on purpose, becouse I`m not willing fixing this code... :) 
         continue-on-error: true  #2.
 
   sonarcloud:
